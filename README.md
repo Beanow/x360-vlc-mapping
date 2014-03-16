@@ -7,7 +7,7 @@ Note: this script assumes the default hotkeys are used in VLC.
 
 ## Normal use
 
-1. Open the `x360-vlc-mapping.pie` file with GlovePIE.
+1. Open the `x360-vlc-mapping.pie` file with GlovePIE / PIEFree.
 2. Run the script with `F9`.
 3. Open VLC.
 
@@ -49,6 +49,6 @@ Be sure to replace the paths with the right paths to your files.
 
 ### Remove UAC warning
 
-If you're using the shortcut and get tired of the UAC warning, you can use the `uac-whitelist.bat` script to install the UAC exception. This exception may break when you have a different version of FreePIE.
+If you're using the shortcut and get tired of the UAC warning, you can use the `uac-whitelist.bat` script to install the UAC exception. This exception may break when you have a different version of PIEFree.
 
-**Warning: this will allow FreePIE (v0.45) to run as administrator without requiring the UAC confirmation. Use at own risk!**
+**Warning: this will allow PIEFree (v0.45) to run as administrator without requiring the UAC confirmation. Use at own risk!**
