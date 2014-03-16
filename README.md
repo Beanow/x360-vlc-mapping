@@ -19,6 +19,7 @@ The mouse controls work anywhere.
 
 ![Mapping Scheme](scheme.png)
 
+[Source image](http://www.clker.com/clipart-xbox-controller-scheme.html)
 
 ## Advanced use
 
