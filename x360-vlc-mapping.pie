@@ -1,0 +1,43 @@
+; Thumbstick threshold
+var.thresh = 0.21
+
+; Mouse speed up
+var.speed = 1/120 + (XInput.RightTrigger*1/20)
+
+; Use the mouse
+if Abs(XInput.RightStickX) > var.thresh then Mouse.x += XInput.RightStickX*var.speed
+if Abs(XInput.RightStickY) > var.thresh then Mouse.y -= XInput.RightStickY*var.speed
+Mouse.LeftButton = XInput.LeftTrigger
+Mouse.RightButton = XInput.RightThumb
+
+; Show time
+Key.T = XInput.Back
+
+; Toggle Playlist view
+Key.Ctrl + Key.L = XInput.Start
+
+; Play/Pause
+Key.Space = XInput.A
+
+; Fullscreen
+Key.F = XInput1.Y
+
+; Next, previous chapter
+Key.Shift + Key.N = XInput.RightShoulder
+Key.Shift + Key.P = XInput.LeftShoulder
+
+; Next, previous item
+Key.N = XInput.B
+Key.P = XInput.X
+
+; Skipping Analog
+Key.Shift + Key.Left = XInput.LeftStickX < -var.thresh
+Key.Shift + Key.Right = XInput.LeftStickX > var.thresh
+
+; Skip D-pad
+Key.Alt + Key.Left = XInput.Left
+Key.Alt + Key.Right = XInput.Right
+
+; Volume D-pad
+Key.Ctrl + Key.Up = XInput.Up
+Key.Ctrl + Key.Down = XInput.Down
