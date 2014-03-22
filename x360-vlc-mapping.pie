@@ -15,8 +15,12 @@ var.mouseTriggerFactor = 1 + (XInput.RightTrigger * var.mouseTriggerSpeedup)
 //Use the mouse
 var.stickX = DeadZone(XInput.RightStickX, var.stickThreshold) 
 var.stickY = DeadZone(XInput.RightStickY, var.stickThreshold)
-Mouse.CursorPosX += (((Abs(var.stickX) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickX)
-Mouse.CursorPosY -= (((Abs(var.stickY) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickY)
+if Abs(var.stickX) > 0 then
+  Mouse.CursorPosX += (((Abs(var.stickX) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickX)
+endif
+if Abs(var.stickY) > 0 then
+  Mouse.CursorPosY -= (((Abs(var.stickY) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickY)
+endif
 Mouse.LeftButton = XInput.LeftTrigger
 Mouse.RightButton = XInput.RightThumb
 
