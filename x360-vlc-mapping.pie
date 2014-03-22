@@ -1,43 +1,53 @@
-; Thumbstick threshold
-var.thresh = 0.21
+﻿; ----------------------------- ;
+; ---- Configurable things ---- ;
+; ----------------------------- ;
 
-; Mouse speed up
-var.speed = 1/120 + (XInput.RightTrigger*1/20)
+var.stickThreshold = 0.17
+var.mouseAcceleration = 4.5
+var.mouseTriggerSpeedup = 5
 
-; Use the mouse
-if Abs(XInput.RightStickX) > var.thresh then Mouse.x += XInput.RightStickX*var.speed
-if Abs(XInput.RightStickY) > var.thresh then Mouse.y -= XInput.RightStickY*var.speed
+; ----------------------------- ;
+; ----------------------------- ;
+
+//Mouse speed up
+var.mouseTriggerFactor = 1 + (XInput.RightTrigger * var.mouseTriggerSpeedup)
+
+//Use the mouse
+var.stickX = DeadZone(XInput.RightStickX, var.stickThreshold) 
+var.stickY = DeadZone(XInput.RightStickY, var.stickThreshold)
+Mouse.CursorPosX += (((Abs(var.stickX) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickX)
+Mouse.CursorPosY -= (((Abs(var.stickY) + 1) ^ var.mouseAcceleration) * var.mouseTriggerFactor) * Sign(var.stickY)
 Mouse.LeftButton = XInput.LeftTrigger
 Mouse.RightButton = XInput.RightThumb
 
-; Show time
+//Show time
 Key.T = XInput.Back
 
-; Toggle Playlist view
+//Toggle Playlist view
 Key.Ctrl + Key.L = XInput.Start
 
-; Play/Pause
+//Play/Pause
 Key.Space = XInput.A
 
-; Fullscreen
+//Fullscreen
 Key.F = XInput1.Y
 
-; Next, previous chapter
+//Next, previous chapter
 Key.Shift + Key.N = XInput.RightShoulder
 Key.Shift + Key.P = XInput.LeftShoulder
 
-; Next, previous item
+//Next, previous item
 Key.N = XInput.B
 Key.P = XInput.X
 
-; Skipping Analog
-Key.Shift + Key.Left = XInput.LeftStickX < -var.thresh
-Key.Shift + Key.Right = XInput.LeftStickX > var.thresh
+//Skipping Analog
+Key.Shift + Key.Left = XInput.LeftStickX < -var.stickThreshold
+Key.Shift + Key.Right = XInput.LeftStickX > var.stickThreshold
 
-; Skip D-pad
+//Skip D-pad
 Key.Alt + Key.Left = XInput.Left
 Key.Alt + Key.Right = XInput.Right
 
-; Volume D-pad
+//Volume D-pad
 Key.Ctrl + Key.Up = XInput.Up
 Key.Ctrl + Key.Down = XInput.Down
